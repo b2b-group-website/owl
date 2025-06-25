@@ -85,16 +85,18 @@ const Dashboard: React.FC<DashboardProps> = ({ data, updateData, onLogout }) => 
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <button onClick={() => setDrawerOpen(true)} className="mr-3 p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="pt-2 pb-1">
+            <h1 className="text-center text-xs font-bold text-gray-700 tracking-wide uppercase">Open Work Log</h1>
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2 py-2">
+            <div className="flex items-center min-w-0 flex-1">
+              <button onClick={() => setDrawerOpen(true)} className="mr-2 p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <Menu className="h-7 w-7 text-gray-700" />
               </button>
-              <img src="/images/OWL_LOGO.svg" alt="OWL Logo" className="h-9 w-auto mr-3" />
-              <h1 className="text-xl font-bold text-gray-900">Open Work Log</h1>
+              <img src="/images/OWL_LOGO.svg" alt="OWL Logo" className="h-8 w-auto mr-2" />
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center gap-2 flex-shrink-0 mt-2 sm:mt-0">
               <button
                 onClick={() => setActiveModal({ type: 'settings' })}
                 className="p-2 text-gray-400 hover:text-gray-600 transition-colors"

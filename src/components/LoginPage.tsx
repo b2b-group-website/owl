@@ -31,7 +31,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="text-center mb-8">
-            <img src="/images/OWL_LOGO.svg" alt="OWL Logo" className="mx-auto h-14 w-auto mb-4" />
+            <img src="/images/owl.svg" alt="OWL Logo" className="mx-auto h-24 w-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Open Work Log</h1>
             <p className="text-gray-600">Enter your password to access your workspace</p>
           </div>

@@ -94,7 +94,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data, updateData, onLogout }) => 
               <button onClick={() => setDrawerOpen(true)} className="mr-2 p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <Menu className="h-7 w-7 text-gray-700" />
               </button>
-              <img src="/images/OWL_LOGO.svg" alt="OWL Logo" className="h-8 w-auto mr-2" />
+              <img src="/images/owl.svg" alt="OWL Logo" className="h-14 w-auto mr-2" />
             </div>
             <div className="flex items-center gap-2 flex-shrink-0 mt-2 sm:mt-0">
               <button

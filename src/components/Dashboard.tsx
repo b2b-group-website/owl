@@ -8,7 +8,8 @@ import {
   TrendingUp,
   Users,
   LogOut,
-  Settings
+  Settings,
+  Menu
 } from 'lucide-react';
 import { AppData, WorkEntry, Note, Expense } from '../types';
 import WorkEntryForm from './WorkEntryForm';
@@ -17,7 +18,7 @@ import ExpenseForm from './ExpenseForm';
 import StatsCard from './StatsCard';
 import RecentActivity from './RecentActivity';
 import SettingsPanel from './SettingsPanel';
-import CalendarView from './CalendarView';
+import WorkHoursDrawer from './WorkHoursDrawer';
 
 interface DashboardProps {
   data: AppData;
@@ -33,6 +34,8 @@ const Dashboard: React.FC<DashboardProps> = ({ data, updateData, onLogout }) => 
     | { type: 'settings' }
     | null
   >(null);
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const totalHours = data.workEntries.reduce((sum, entry) => sum + entry.hours, 0);
   const estimatedEarnings = totalHours * data.settings.hourlyRate;
@@ -85,6 +88,9 @@ const Dashboard: React.FC<DashboardProps> = ({ data, updateData, onLogout }) => 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
+              <button onClick={() => setDrawerOpen(true)} className="mr-3 p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <Menu className="h-7 w-7 text-gray-700" />
+              </button>
               <img src="/images/OWL_LOGO.svg" alt="OWL Logo" className="h-9 w-auto mr-3" />
               <h1 className="text-xl font-bold text-gray-900">Open Work Log</h1>
             </div>
@@ -108,11 +114,6 @@ const Dashboard: React.FC<DashboardProps> = ({ data, updateData, onLogout }) => 
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Calendario */}
-        <CalendarView
-          workEntries={data.workEntries}
-          onAddEntry={(date) => setActiveModal({ type: 'work', date })}
-        />
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatsCard
@@ -209,6 +210,12 @@ const Dashboard: React.FC<DashboardProps> = ({ data, updateData, onLogout }) => 
           onImportData={(imported) => updateData(imported)}
         />
       )}
+
+      {/* Drawer laterale per gestione ore lavorate */}
+      <WorkHoursDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      />
     </div>
   );
 };
